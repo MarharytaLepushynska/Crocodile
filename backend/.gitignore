@@ -1,0 +1,11 @@
+/shelf/
+/httpRequests/
+/dataSources/
+/dataSources.local.xml
+target/
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+.mvn/
+.idea/
