@@ -6,11 +6,29 @@ import service.RoomService;
 import service.UserService;
 import service.WordService;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 public class DataBase {
-    // локально: export DATABASE_URL=jdbc:postgresql://localhost:5432/crocodile?user=postgres&password=...
-    // Railway/Render: DATABASE_URL виставляється автоматично
-    private static final String DEFAULT_DB_URL =
-            System.getenv().getOrDefault("DATABASE_URL", "jdbc:postgresql://localhost:5432/crocodile");
+    private static final String DEFAULT_DB_URL = resolveDbUrl();
+
+    private static String resolveDbUrl() {
+        String envUrl = System.getenv("DATABASE_URL");
+        if (envUrl != null && !envUrl.isBlank()) return envUrl;
+
+        try (InputStream in = DataBase.class.getClassLoader()
+                .getResourceAsStream("application.properties")) {
+            if (in != null) {
+                Properties props = new Properties();
+                props.load(in);
+                String url = props.getProperty("db.url");
+                if (url != null && !url.isBlank()) return url;
+            }
+        } catch (IOException ignored) {}
+
+        return "jdbc:postgresql://localhost:5432/crocodile";
+    }
 
     private static final UserService USER_SERVICE = new UserService(DEFAULT_DB_URL);
     private static final RoomService ROOM_SERVICE = new RoomService(DEFAULT_DB_URL);
