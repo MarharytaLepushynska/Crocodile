@@ -5,19 +5,34 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
+import java.util.Properties;
 
 //для перевірки токенів
 public class JwtUtil {
     private static final String SECRET = resolveSecret();
     private static final Algorithm ALGORITHM = Algorithm.HMAC256(SECRET);
-    private static final long EXPIRATION = 24L * 120000;
+    private static final long EXPIRATION = 24L * 1200000;
 
     private static String resolveSecret() {
         String envSecret = System.getenv("JWT_SECRET");
         if (envSecret != null && !envSecret.isBlank()) {
             return envSecret;
         }
+
+        try (InputStream in = JwtUtil.class.getClassLoader()
+                .getResourceAsStream("application.properties")) {
+            if (in != null) {
+                Properties props = new Properties();
+                props.load(in);
+                String secret = props.getProperty("jwt.secret");
+                if(secret != null && !secret.isBlank()) {
+                    return secret;
+                }
+            }
+        } catch (IOException e) {}
 
         return "crocodile-secret";
     }
