@@ -1,5 +1,8 @@
 package utils;
 
+import packet.PixelBatch;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -97,5 +100,55 @@ public class JsonUtil {
                 .replace("\\r", "\r")
                 .replace("\\t", "\t")
                 .replace("\\\\", "\\");
+    }
+
+    public static List<Map<String, String>> parseArrayOfObjects(String json, String key) {
+        List<Map<String, String>> result = new ArrayList<>();
+        if (json == null) return result;
+
+        String s = json.strip();
+        if (!s.startsWith("{")) return result;
+        s = s.substring(1, s.endsWith("}") ? s.length() - 1 : s.length()).strip();
+
+        String marker = "\"" + key + "\"";
+        int keyIndex = s.indexOf(marker);
+        if (keyIndex < 0) return result;
+
+        int arrayStart = s.indexOf('[', keyIndex);
+        if (arrayStart < 0) return result;
+
+        int arrayEnd = findMatchingBracket(s, arrayStart, '[', ']');
+        if (arrayEnd < 0) return result;
+
+        String arrayContent = s.substring(arrayStart + 1, arrayEnd).strip();
+        if (arrayContent.isEmpty()) return result;
+
+        int i = 0;
+        while (i < arrayContent.length()) {
+            if (arrayContent.charAt(i) != '{') { i++; continue; }
+
+            int objEnd = findMatchingBracket(arrayContent, i, '{', '}');
+            if (objEnd < 0) break;
+
+            String objectJson = arrayContent.substring(i, objEnd + 1);
+            result.add(parseObject(objectJson));
+
+            i = objEnd + 1;
+        }
+
+        return result;
+    }
+
+    private static int findMatchingBracket(String s, int openIndex, char open, char close) {
+        int depth = 0;
+        for( int i = openIndex; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == open) depth++;
+            else if (c == close) {
+                depth--;
+                if (depth == 0) return i;
+            }
+        }
+        return -1;
     }
 }
