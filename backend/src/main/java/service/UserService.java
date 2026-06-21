@@ -1,6 +1,7 @@
 package service;
 
 import enteties.User;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -40,7 +41,7 @@ public class UserService {
         try (Connection con = connect();
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, username);
-            ps.setString(2, password);
+            ps.setString(2, DigestUtils.sha256Hex(password));
             ps.setString(3, avatar);
             ResultSet rs = ps.executeQuery();
             long id = rs.next() ? rs.getLong(1) : 0;
@@ -83,7 +84,7 @@ public class UserService {
 
     public synchronized User authenticate(String username, String password) {
         User user = findByUsername(username);
-        if (user == null || !user.getPassword().equals(password))
+        if (user == null || !user.getPassword().equals(DigestUtils.sha256Hex(password)))
             return null;
 
         return user;
