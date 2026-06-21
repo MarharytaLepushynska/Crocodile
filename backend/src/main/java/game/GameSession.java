@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-//тип даниз для гри, що зберігає стан кімнати (гравців, раундів, поточного художника, слова, малюнку)
+//тип даних для гри, що зберігає стан кімнати (гравців, раундів, поточного художника, слова, малюнку)
 //будемо користуватися цим класом у RoomManager, щоб зберігати стан гри у пам'яті
 public class GameSession {
     private final long roomId;

@@ -10,7 +10,7 @@ import packet.PixelBatch;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-//ми бужкмо викоримтвувати цей сервіс у http-обробниках для запуску гри, прийому малюнків та відгадок, отримання результатів
+//ми будемо використовувати цей сервіс у http-обробниках для запуску гри, прийому малюнків та відгадок, отримання результатів
 
 public class GameService {
     private final RoomService roomService;
