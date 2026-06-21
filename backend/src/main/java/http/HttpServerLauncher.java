@@ -34,6 +34,9 @@ public class HttpServerLauncher {
         // guess
         server.createContext("/guess",    new GuessHandler());
 
+        // avatars
+        server.createContext("/avatars",  new AvatarHandler());
+
         server.setExecutor(Executors.newCachedThreadPool());
         server.start();
 
