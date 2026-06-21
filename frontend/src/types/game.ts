@@ -59,6 +59,7 @@ export interface Room {
     inviteCode: string;
     creatorId: number;
     players: RoomPlayer[];
+    displayPlayers: DisplayPlayer[];
 
     currentRound?: number;
     currentDrawerId?: number;

@@ -1,4 +1,6 @@
-const API_BASE_URL: string = "http://localhost:8080";
+const API_BASE_URL: string =
+    (import.meta.env.VITE_API_URL as string | undefined) ??
+    "http://localhost:8080";
 
 const TOKEN_STORAGE_KEY = "crocodile_token";
 
