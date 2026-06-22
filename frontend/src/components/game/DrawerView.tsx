@@ -4,6 +4,7 @@ import { DrawingCanvas } from "./DrawingCanvas";
 import { PlayersList } from "./PlayersList";
 import { Panel } from "../common/Panel";
 import { Button } from "../common/Button";
+import { Logo } from "../common/Logo";
 import { usePixelBatcher } from "../../hooks/usepixeldrawer";
 import { DRAW_COLORS } from "../../types/game";
 import type { Pixel, Room } from "../../types/game";
@@ -45,6 +46,7 @@ export function DrawerView({ room, roomId }: DrawerViewProps) {
             </div>
 
             <div className="drawer-view__center">
+                <Logo size="medium" />
                 <div className="drawer-view__timer">
                     {room.secondsLeft ?? 0}с
                 </div>

@@ -5,6 +5,7 @@ import { PlayersList } from "./PlayersList";
 import { Panel } from "../common/Panel";
 import { Button } from "../common/Button";
 import { InputForm } from "../common/InputForm";
+import { Logo } from "../common/Logo";
 import { submitGuess } from "../../api/roomApi";
 import type { Room } from "../../types/game";
 
@@ -56,6 +57,7 @@ export function GuesserView({ room, roomId }: GuesserViewProps) {
             </div>
 
             <div className="guesser-view__center">
+                <Logo size="medium" />
                 <div className="guesser-view__timer">
                     {room.secondsLeft ?? 0}с
                 </div>

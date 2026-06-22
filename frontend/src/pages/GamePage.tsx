@@ -46,7 +46,6 @@ export default function GamePage() {
     return (
         <PageBackground>
             <div className="game-page">
-                <Logo size="medium" />
                 {isDrawer
                     ? <DrawerView room={room} roomId={roomId} />
                     : <GuesserView room={room} roomId={roomId} />
