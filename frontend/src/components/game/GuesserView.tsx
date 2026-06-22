@@ -6,6 +6,7 @@ import { Panel } from "../common/Panel";
 import { Button } from "../common/Button";
 import { InputForm } from "../common/InputForm";
 import { Logo } from "../common/Logo";
+import runningGif from "../../assets/gifs/runoutoftime.gif";
 import { submitGuess } from "../../api/roomApi";
 import type { Room } from "../../types/game";
 
@@ -89,6 +90,13 @@ export function GuesserView({ room, roomId }: GuesserViewProps) {
                         Відповісти
                     </Button>
                 </Panel>
+
+                {(room.secondsLeft ?? 0) <= 5 && (room.secondsLeft ?? 0) > 0 && (
+                    <div className="guesser-view__timeout">
+                        <p className="guesser-view__timeout-text">Час збігає!</p>
+                        <img src={runningGif} alt="run!" className="guesser-view__timeout-gif" />
+                    </div>
+                )}
             </div>
         </div>
     );
