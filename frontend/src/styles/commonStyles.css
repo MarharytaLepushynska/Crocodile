@@ -1,0 +1,36 @@
+.field-label {
+    display: block;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-1);
+}
+
+.panel__row {
+    display: flex;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+}
+
+.panel__field {
+    flex: 1;
+    min-width: 0;
+}
+
+.panel__field + .panel__field {
+    margin-top: 0;
+}
+
+.panel__field:not(:last-child) {
+    margin-bottom: 0;
+}
+
+.panel__actions {
+    margin-top: var(--space-3);
+    display: flex;
+    justify-content: flex-start;
+}
+
+.panel > .field-label,
+.panel > .form-input {
+    margin-bottom: var(--space-2);
+}
