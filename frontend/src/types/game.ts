@@ -5,11 +5,14 @@ export interface Avatar {
 }
 
 export const AVAILABLE_AVATARS: Avatar[] = [
-    { fileName: "avatar1.png" },
-    { fileName: "avatar2.png" },
-    { fileName: "avatar3.png" },
-    { fileName: "avatar4.png" },
-    { fileName: "avatar5.png" },
+    { fileName: "baloongummy.jpg" },
+    { fileName: "bitetailgummy.jpg" },
+    { fileName: "bytygummy.jpg" },
+    { fileName: "coquetgummyjpg.jpg" },
+    { fileName: "gummycuteicon.jpg" },
+    { fileName: "hackergummy.jpg" },
+    { fileName: "huggygummy.jpg" },
+    { fileName: "pinkiekissgummy.jpg" },
 ];
 
 export const DRAW_COLORS: string[] = [
