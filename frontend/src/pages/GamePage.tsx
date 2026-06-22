@@ -1,25 +1,18 @@
 import "./GamePage.css";
-import { useParams, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { PageBackground } from "../components/layout/PageBackground";
 import { Logo } from "../components/common/Logo";
 import { DrawerView } from "../components/game/DrawerView";
 import { GuesserView } from "../components/game/GuesserView";
+import { ResultsView } from "../components/game/ResultsView";
 import { WaitingPage } from "./WaitingPage";
 import { useRoomPolling } from "../hooks/useroompolling";
 import { useGameContext } from "../context/GameContext";
 
 export default function GamePage() {
     const { roomId } = useParams<{ roomId: string }>();
-    const navigate = useNavigate();
     const { user } = useGameContext();
     const { room, isLoading } = useRoomPolling(roomId ?? null);
-
-    useEffect(() => {
-        if (room?.status === "FINISHED") {
-            navigate(`/lobby`);
-        }
-    }, [room?.status, roomId, navigate]);
 
     if (!roomId) return null;
 
@@ -35,6 +28,17 @@ export default function GamePage() {
 
     if (room.status === "WAITING") {
         return <WaitingPage roomId={Number(roomId)} />;
+    }
+
+    if (room.status === "FINISHED") {
+        return (
+            <PageBackground>
+                <div className="game-page">
+                    <Logo size="medium" />
+                    <ResultsView players={room.displayPlayers} />
+                </div>
+            </PageBackground>
+        );
     }
 
     const isDrawer = user?.userId === room.currentDrawerId;
