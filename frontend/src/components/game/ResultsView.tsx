@@ -22,7 +22,7 @@ export function ResultsView({ players }: ResultsViewProps) {
                 {winner && (
                     <>
                         <img
-                            src={isDraw ? "/friendship.png" : `/avatars/${winner.avatarFileName}`}
+                            src={isDraw ? "/friendship.jpg" : `/avatars/${winner.avatarFileName}`}
                             alt={isDraw ? "friendship" : winner.username}
                             className="results-view__avatar"
                         />
