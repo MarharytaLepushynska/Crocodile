@@ -1,6 +1,7 @@
 import "./ResultsView.css";
 import { Button } from "../common/Button";
 import { useNavigate } from "react-router-dom";
+import { useGameContext } from "../../context/GameContext";
 import type { DisplayPlayer } from "../../types/game";
 
 interface ResultsViewProps {
@@ -9,6 +10,7 @@ interface ResultsViewProps {
 
 export function ResultsView({ players }: ResultsViewProps) {
     const navigate = useNavigate();
+    const { signOut } = useGameContext();
 
     const sorted = [...players].sort((a, b) => b.score - a.score);
     const winner = sorted[0];
@@ -17,8 +19,8 @@ export function ResultsView({ players }: ResultsViewProps) {
     return (
         <div className="results-view">
             <div className="results-view__card">
-                <h2 className="results-view__title">Game finished</h2>
-                <p className="results-view__subtitle">{isDraw ? "Нічия!" : "Winner"}</p>
+                <h2 className="results-view__title">Гра завершена</h2>
+                <p className="results-view__subtitle">{isDraw ? "Нічия!" : "Переможець"}</p>
                 {winner && (
                     <>
                         <img
@@ -27,7 +29,7 @@ export function ResultsView({ players }: ResultsViewProps) {
                             className="results-view__avatar"
                         />
                         <p className="results-view__name">{isDraw ? "Перемогла дружба" : winner.username}</p>
-                        <p className="results-view__points">{isDraw ? "" : `${winner.score} Points`}</p>
+                        <p className="results-view__points">{isDraw ? "" : `${winner.score} очок`}</p>
                     </>
                 )}
                 <div className="results-view__all">
@@ -40,12 +42,19 @@ export function ResultsView({ players }: ResultsViewProps) {
                                 className="results-view__small-avatar"
                             />
                             <span className="results-view__player-name">{p.username}</span>
-                            <span className="results-view__player-score">{p.score} pts</span>
+                            <span className="results-view__player-score">{p.score} оч.</span>
                         </div>
                     ))}
                 </div>
                 <Button onClick={() => navigate("/lobby")} className="results-view__btn">
                     До лобі
+                </Button>
+                <Button
+                    variant="secondary"
+                    onClick={() => { signOut(); navigate("/"); }}
+                    className="results-view__btn"
+                >
+                    Вийти
                 </Button>
             </div>
         </div>

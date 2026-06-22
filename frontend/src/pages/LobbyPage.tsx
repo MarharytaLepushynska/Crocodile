@@ -5,11 +5,14 @@ import { PageBackground } from "../components/layout/PageBackground";
 import { Logo } from "../components/common/Logo";
 import { JoinGamePanel } from "../components/lobby/JoinGamePanel";
 import { CreateGamePanel } from "../components/lobby/CreateGamePanel";
+import { Button } from "../components/common/Button";
 import { createRoom, joinByInviteCode } from "../api/roomApi";
 import { ApiError } from "../api/client";
+import { useGameContext } from "../context/GameContext";
 
 export function LobbyPage() {
     const navigate = useNavigate();
+    const { signOut } = useGameContext();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -57,6 +60,9 @@ export function LobbyPage() {
                     <CreateGamePanel onCreate={(drawTime, rounds) => void handleCreate(drawTime, rounds)}
                                      isSubmitting={isSubmitting}/>
                 </div>
+                <Button variant="secondary" onClick={() => { signOut(); navigate("/"); }}>
+                    Вийти
+                </Button>
             </div>
         </PageBackground>
     );
