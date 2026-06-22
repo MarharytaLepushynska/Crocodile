@@ -1,14 +1,12 @@
 .logo {
-    font-family: var(--font-display);
-    font-weight: 700;
     margin: 0;
-    letter-spacing: 0.5px;
+    object-fit: contain;
 }
 
 .logo--large {
-    font-size: 56px;
+    height: 180px;
 }
 
 .logo--medium {
-    font-size: 32px;
+    height: 90px;
 }

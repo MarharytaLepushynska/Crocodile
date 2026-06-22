@@ -5,7 +5,7 @@ import { LobbyPage } from "./pages/LobbyPage";
 //import { GamePage } from "./pages/GamePage";
 import "./styles/mainTheme.css";
 import "./styles/commonStyles.css";
-
+//import logo from "./assets/ui/logo.png";
 export default function App() {
   return (
       <GameProvider>

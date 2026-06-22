@@ -1,5 +1,6 @@
 import "./AuthPage.css";
 import { useState } from "react";
+import drawing from "../assets/ui/drawing.png";
 import { useNavigate } from "react-router-dom";
 import { PageBackground } from "../components/layout/PageBackground";
 import { Logo } from "../components/common/Logo";
@@ -117,6 +118,7 @@ export function AuthPage() {
                             {mode === "register" ? "Play" : "Login"}
                         </Button>
                 </Panel>
+            <img src={drawing} alt="drawing" className="auth-page__drawing" />
             </div>
         </PageBackground>
     );
