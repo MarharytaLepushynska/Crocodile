@@ -18,9 +18,9 @@ export function JoinGamePanel({onJoin, isSubmitting}: JoinGamePanelProps) {
     }
 
     return (
-        <Panel title="Join game">
+        <Panel title="Приєднатись до гри">
             <label className="field-label" htmlFor="game-id-input">
-                Enter game code
+                Введіть код кімнати
             </label>
             <InputForm
                 id = "game-id-input"
@@ -30,7 +30,7 @@ export function JoinGamePanel({onJoin, isSubmitting}: JoinGamePanelProps) {
                 />
             <div className="panel__actions">
                 <Button onClick={handleSubmit} disabled={isSubmitting || roomId.trim().length === 0}>
-                    Join
+                    Приєднатись
                 </Button>
             </div>
         </Panel>

@@ -80,16 +80,16 @@ export function AuthPage() {
                         <button type = "button"
                                 className={`auth-page__tab ${mode === "register" ? "auth-page__tab--active" : ""}`}
                                  onClick={() => switchMode("register")}>
-                            Register
+                            Реєстрація
                         </button>
                         <button type="button"
                             className={`auth-page__tab ${mode === "login" ? "auth-page__tab--active" : ""}`}
                             onClick={() => switchMode("login")}>
-                            Login
+                            Вхід
                         </button>
                     </div>
                         <InputForm
-                            placeholder="Enter your name"
+                            placeholder="Введіть імʼя"
                             value={username}
                             onChange={(event) => setUsername(event.target.value)}
                             onKeyDown={(event) => {
@@ -98,7 +98,7 @@ export function AuthPage() {
                         />
                         <InputForm
                             type="password"
-                            placeholder="Enter your password"
+                            placeholder="Введіть пароль"
                             value={password}
                             onChange={(event) => setPassword(event.target.value)}
                             onKeyDown={(event) => {
@@ -115,7 +115,7 @@ export function AuthPage() {
                             onClick={() => void handleSubmit()}
                             disabled={isSubmitting}
                         >
-                            {mode === "register" ? "Play" : "Login"}
+                            {mode === "register" ? "Грати" : "Увійти"}
                         </Button>
                 </Panel>
             <img src={drawing} alt="drawing" className="auth-page__drawing" />

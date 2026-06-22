@@ -15,11 +15,11 @@ export function CreateGamePanel({ onCreate, isSubmitting }: CreateGamePanelProps
     const [rounds, setRounds] = useState(ROUNDS_OPTIONS[1]);
 
     return(
-        <Panel title="Create your game">
+        <Panel title="Створити гру">
             <div className="panel__row">
                 <div className="panel__field">
                     <label className="field-label" htmlFor="draw-time-select">
-                        Draw time
+                        Час малювання
                     </label>
                     <select
                         id="draw-time-select"
@@ -37,7 +37,7 @@ export function CreateGamePanel({ onCreate, isSubmitting }: CreateGamePanelProps
 
                 <div className="panel__field">
                     <label className="field-label" htmlFor="rounds-select">
-                        Rounds
+                        Раунди
                     </label>
                     <select
                         id="rounds-select"
@@ -59,7 +59,7 @@ export function CreateGamePanel({ onCreate, isSubmitting }: CreateGamePanelProps
                     onClick={() => onCreate(drawTime, rounds)}
                     disabled={isSubmitting}
                 >
-                    Play
+                    Грати
                 </Button>
             </div>
         </Panel>
