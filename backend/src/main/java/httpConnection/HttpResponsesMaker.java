@@ -24,6 +24,9 @@ public class HttpResponsesMaker {
         byte[] bytes = json.getBytes();
 
         ex.getResponseHeaders().set("Content-Type", "application/json; charset=utf-8");
+        ex.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
+        ex.getResponseHeaders().set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        ex.getResponseHeaders().set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         ex.sendResponseHeaders(statusCode, bytes.length);
         try(OutputStream os = ex.getResponseBody()) {
             os.write(bytes);
@@ -34,5 +37,13 @@ public class HttpResponsesMaker {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("message", message);
         sendJson(ex, statusCode, body);
+    }
+
+    public static void sendNoContext(HttpExchange exchange) throws IOException {
+        exchange.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
+        exchange.getResponseHeaders().set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        exchange.getResponseHeaders().set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+        exchange.sendResponseHeaders(204, -1);
+        exchange.close();
     }
 }

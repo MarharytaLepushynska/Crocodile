@@ -25,6 +25,11 @@ public class AuthHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         String method = exchange.getRequestMethod();
 
+        if (method.equalsIgnoreCase("OPTIONS")) {
+            HttpResponsesMaker.sendNoContext(exchange);
+            return;
+        }
+
         if(!method.equals("POST")) {
             HttpResponsesMaker.sendError(exchange, 405, "POST expected");
             return;

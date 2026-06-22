@@ -32,6 +32,11 @@ public class RoomHandler implements HttpHandler {
         String path = exchange.getRequestURI().getPath();
         String[] segments = path.split("/");
 
+        if (method.equalsIgnoreCase("OPTIONS")) {
+            HttpResponsesMaker.sendNoContext(exchange);
+            return;
+        }
+
         if(segments.length == 2 && method.equals("POST")) {
             long userId = AuthContext.getUserId(exchange);
             Map<String, String> body = JsonUtil.parseObject(HttpResponsesMaker.readBody(exchange));

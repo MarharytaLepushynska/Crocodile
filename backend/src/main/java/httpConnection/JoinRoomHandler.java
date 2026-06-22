@@ -23,6 +23,11 @@ public class JoinRoomHandler implements HttpHandler {
         String path = exchange.getRequestURI().getPath();
         String[] segments = path.split("/");
 
+        if (method.equalsIgnoreCase("OPTIONS")) {
+            HttpResponsesMaker.sendNoContext(exchange);
+            return;
+        }
+
         if (segments.length == 3 && method.equals("POST")) {
             String inviteCode = segments[2];
             long userId = AuthContext.getUserId(exchange);

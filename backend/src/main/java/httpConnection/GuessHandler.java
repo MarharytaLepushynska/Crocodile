@@ -22,6 +22,11 @@ public class GuessHandler implements HttpHandler {
         String path = exchange.getRequestURI().getPath();
         String[] segments = path.split("/");
 
+        if (method.equalsIgnoreCase("OPTIONS")) {
+            HttpResponsesMaker.sendNoContext(exchange);
+            return;
+        }
+
         if(segments.length == 3 && method.equals("POST")) {
             long roomId = Long.parseLong(segments[2]);
             long userId = AuthContext.getUserId(exchange);

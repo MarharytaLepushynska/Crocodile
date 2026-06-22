@@ -16,7 +16,9 @@ public class JwtAuthenticator extends Authenticator {
     @Override
     public Result authenticate(HttpExchange exch) {
 
-        //Я бачила, що можливо треба окремо обробити OPTIONS вже при роботу з браузером, але це поки на потім
+        if (exch.getRequestMethod().equalsIgnoreCase("OPTIONS")) {
+            return new Success(new HttpPrincipal("preflight", "PREFLIGHT"));
+        }
 
         List<String> values = exch.getRequestHeaders().get("Authorization");
         if(values == null || values.isEmpty()) {
