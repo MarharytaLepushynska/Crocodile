@@ -1,0 +1,29 @@
+.avatar-picker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    margin: var(--space-4) 0;
+}
+
+.avatar-picker__arrow {
+    background: none;
+    border: none;
+    color: var(--color-text-primary);
+    font-size: 20px;
+    cursor: pointer;
+    padding: var(--space-2);
+    line-height: 1;
+}
+
+.avatar-picker__arrow:hover {
+    color: var(--color-accent-green);
+}
+
+.avatar-picker__preview {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: var(--color-accent-green);
+}

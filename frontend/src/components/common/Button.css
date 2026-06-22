@@ -1,0 +1,36 @@
+.app-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: var(--radius-button);
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.05s ease;
+}
+
+.app-button:active {
+    transform: translateY(1px);
+}
+
+.app-button--primary {
+    background-color: var(--color-accent-green);
+    color: #0a1f0c;
+}
+
+.app-button--primary:hover:not(:disabled) {
+    background-color: var(--color-accent-green-hover);
+}
+
+.app-button--secondary {
+    background-color: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-panel-border);
+}
+
+.app-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
