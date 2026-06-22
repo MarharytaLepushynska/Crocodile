@@ -39,5 +39,5 @@ export function usePixelBatcher(
         };
     }, [isActive, roomId, flushIntervalMs, flush]);
 
-    return { addPoint };
+    return { addPoint, flush };
 }
