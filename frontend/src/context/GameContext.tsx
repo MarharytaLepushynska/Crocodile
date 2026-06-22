@@ -1,7 +1,7 @@
 import { createContext, useContext, useMemo, useState } from "react";
 import type { ReactNode } from "react";
-import { useAuth } from "../hooks/useauth.ts";
-import type { CurrentUser } from "../hooks/useauth.ts";
+import { useAuth } from "../hooks/useAuth.ts";
+import type { CurrentUser } from "../hooks/useAuth.ts";
 import type { AuthResponse } from "../types/api";
 
 interface GameContextValue {
@@ -37,7 +37,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
 export function useGameContext(): GameContextValue {
     const context = useContext(GameContext);
     if (!context) {
-        throw new Error("useGameContext повинен використовуватись всередині GameProvider");
+        throw new Error("useGameContext must be inside GameProvider");
     }
     return context;
 }
