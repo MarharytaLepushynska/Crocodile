@@ -1,0 +1,92 @@
+.waiting-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-5);
+}
+
+.waiting-page__panel {
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.waiting-page__invite {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    background-color: var(--color-bg);
+    border-radius: var(--radius-button);
+    padding: 10px 14px;
+}
+
+.waiting-page__invite-label {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+.waiting-page__invite-code {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-accent-green);
+}
+
+.waiting-page__players {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.waiting-page__player {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 8px;
+    border-radius: var(--radius-button);
+    background-color: var(--color-bg);
+}
+
+.waiting-page__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.waiting-page__username {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.waiting-page__badge {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-accent-green);
+    border: 1px solid var(--color-accent-green);
+    border-radius: 99px;
+    padding: 2px 8px;
+}
+
+.waiting-page__start-button {
+    width: 100%;
+}
+
+.waiting-page__error {
+    color: #f87171;
+    font-size: 13px;
+    text-align: center;
+    margin: 0;
+}
+
+.waiting-page__loading {
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-size: 14px;
+}
