@@ -1,0 +1,57 @@
+:root {
+    --color-background: #1e3a5f;
+    --color-background-deep: #16304f;
+    --color-panel: #2a4a73;
+    --color-panel-border: rgba(255, 255, 255, 0.08);
+    --color-canvas: #e9eaec;
+    --color-input-bg: #f4f5f7;
+    --color-input-text: #1e293b;
+    --color-text-primary: #f4f6f9;
+    --color-text-secondary: #b8c4d6;
+    --color-accent-green: #3ecf4a;
+    --color-accent-green-hover: #34b540;
+    --color-badge-admin: #2ecc71;
+    --color-badge-drawer: #e0379c;
+
+    --logo-color-1: #ef4444;
+    --logo-color-2: #f59e0b;
+    --logo-color-3: #eab308;
+    --logo-color-4: #22c55e;
+    --logo-color-5: #06b6d4;
+    --logo-color-6: #6366f1;
+    --logo-color-7: #d946ef;
+
+    --radius-panel: 10px;
+    --radius-input: 6px;
+    --radius-button: 6px;
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+
+    --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+    --font-display: "Poppins", "Inter", system-ui, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+}
+
+button {
+    font-family: inherit;
+}
+
+input,
+select {
+    font-family: inherit;
+}
