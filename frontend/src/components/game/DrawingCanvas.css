@@ -1,0 +1,14 @@
+.drawing-canvas {
+    border: 2px solid var(--color-panel-border);
+    border-radius: var(--radius-button);
+    background: #ffffff;
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 1;
+    cursor: default;
+}
+
+.drawing-canvas--active {
+    cursor: crosshair;
+}
