@@ -10,6 +10,7 @@ import java.util.concurrent.Executors;
 
 public class HttpServerLauncher {
     public static void start(int port) throws IOException {
+
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
 
         //пул з потоками щоб один запит не тормозив інші, мб більший треба буде
