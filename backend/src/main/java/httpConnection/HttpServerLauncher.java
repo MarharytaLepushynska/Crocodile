@@ -9,8 +9,10 @@ import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
 
 public class HttpServerLauncher {
-    public static void start(int port) throws IOException {
-        HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
+    private HttpServer server;
+
+    public void start(int port) throws IOException {
+        server = HttpServer.create(new InetSocketAddress(port), 0);
 
         //пул з потоками щоб один запит не тормозив інші, мб більший треба буде
         server.setExecutor(Executors.newFixedThreadPool(20));
@@ -37,5 +39,11 @@ public class HttpServerLauncher {
 
         server.start();
         System.out.println("Http сервер запущено на порту: " + port);
+    }
+
+    public void stop() {
+        if(server != null) {
+            server.stop(0);
+        }
     }
 }
