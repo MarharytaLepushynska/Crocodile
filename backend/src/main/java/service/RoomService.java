@@ -202,7 +202,11 @@ public class RoomService {
     }
 
     private Connection connect() throws SQLException {
-        return DriverManager.getConnection(dbUrl);
+        return DriverManager.getConnection(
+                dbUrl,
+                System.getenv("DB_USER"),
+                System.getenv("DB_PASSWORD")
+        );
     }
 
     private Room readRoom(ResultSet rs) throws SQLException {

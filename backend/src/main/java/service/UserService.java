@@ -107,7 +107,11 @@ public class UserService {
     }
 
     private Connection connect() throws SQLException {
-        return DriverManager.getConnection(dbUrl);
+        return DriverManager.getConnection(
+                dbUrl,
+                System.getenv("DB_USER"),
+                System.getenv("DB_PASSWORD")
+        );
     }
 
     private User readUser(ResultSet rs) throws SQLException {
