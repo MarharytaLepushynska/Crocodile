@@ -106,6 +106,15 @@ public class UserService {
         }
     }
 
+    public void deleteAll() {
+        try(Connection con = connect();
+            PreparedStatement ps = con.prepareStatement("delete from users")) {
+            int deleted = ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Can't delete all users", e);
+        }
+    }
+
     private Connection connect() throws SQLException {
         return DriverManager.getConnection(dbUrl);
     }
